@@ -29,3 +29,33 @@ book1.updateCopies(-1)  # Borrow a book (reduce copies)
 book1.updateCopies(2)   # Return books (increase copies)
 
 print(book1.getDetails())  # Check updated details
+
+
+//Task 2: Creating a Borrower Class
+
+class Borrower {
+    constructor(name, borrowerId) {
+      this.name = name;
+      this.borrowerId = borrowerId;
+      this.borrowedBooks = []; // Initially, the borrower has no borrowed books
+    }
+  
+    borrowBook(book) {
+      this.borrowedBooks.push(book);
+    }
+  
+    returnBook(book) {
+      this.borrowedBooks = this.borrowedBooks.filter(b => b !== book);
+    }
+  }
+  
+  // Test Cases
+  const borrower1 = new Borrower("Alice Johnson", 201);
+  
+  borrower1.borrowBook("The Great Gatsby");
+  console.log(borrower1.borrowedBooks);
+  // Expected output: ["The Great Gatsby"]
+  
+  borrower1.returnBook("The Great Gatsby");
+  console.log(borrower1.borrowedBooks);
+  // Expected output: []
